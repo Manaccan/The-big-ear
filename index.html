@@ -36,29 +36,32 @@
             margin-bottom: 30px;
         }
 
-        /* LOGO ADJUSTMENTS */
         .logo {
             width: 200px;
-            height: auto;
+            height: 200px;
             border-radius: 15px;
-            margin-top: 10px; /* Aligns with H1 top */
+            padding: 20px;
         }
 
         .text-container {
             flex: 1;
-            padding-top: 10px; /* Aligns text with logo */
+            padding-left: 20px; /* Added for alignment */
         }
 
         h1 {
             color: #2a4a6e;
             font-size: 70px;
-            margin-bottom: 15px;
+            margin-bottom: 5px; /* Reduced from 15px */
+        }
+
+        h2, h3, h4 {
+            padding-left: 10px; /* Right shift for alignment */
         }
 
         h2 {
             color: #4a6582;
             font-size: 28px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-weight: 400;
         }
 
@@ -67,47 +70,44 @@
             font-size: 20px;
             font-weight: 300;
             max-width: 500px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         h4 {
             color: #4a6582;
             font-size: 20px;
             font-style: italic;
-            margin-bottom: 10px; /* Aligns with logo bottom */
+            margin-top: 8px;
         }
 
-        /* ===== NEW CONTACT SECTION ===== */
-        .contact-section {
+        /* ===== MAIN CONTENT ===== */
+        .content {
             max-width: 1000px;
             width: 100%;
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            text-align: center;
         }
 
-        .contact-links {
+        /* Two-panel layout */
+        .panels {
             display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 25px;
+            gap: 30px;
+            margin-top: 20px;
         }
 
-        .contact-links a {
-            color: #2a4a6e;
-            text-decoration: none;
+        .panel {
+            flex: 1;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .intro-text {
+            color: #4a6582;
             font-size: 18px;
-            padding: 12px 35px;
-            border: 2px solid #2a4a6e;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-        }
-
-        .contact-links a:hover {
-            background: #2a4a6e;
-            color: white;
+            line-height: 1.7;
+            margin: 0 auto 40px;
+            max-width: 800px;
+            text-align: center;
         }
 
         /* ===== MOBILE RESPONSIVENESS ===== */
@@ -119,9 +119,8 @@
                 padding: 30px;
             }
 
-            .logo {
-                width: 150px;
-                margin-top: 0;
+            .text-container {
+                padding-left: 0;
             }
 
             h1 {
@@ -137,7 +136,6 @@
             h3 {
                 font-size: 16px;
                 text-align: center;
-                margin: 0 auto 10px;
             }
 
             h4 {
@@ -145,14 +143,13 @@
                 text-align: center;
             }
 
-            .contact-links {
+            .panels {
                 flex-direction: column;
-                gap: 15px;
             }
 
-            .contact-links a {
-                width: 100%;
-                padding: 12px;
+            .intro-text {
+                padding: 0 20px;
+                font-size: 16px;
             }
         }
     </style>
@@ -168,17 +165,24 @@
         </div>
     </header>
 
-    <!-- NEW CONTACT SECTION -->
-    <section class="contact-section">
-        <h2>Get Help Now</h2>
-        <div class="contact-links">
-            <a href="https://github.com/Manaccan/the-big-ear/discussions" target="_blank">
-                Ask in GitHub Discussions
-            </a>
-            <a href="mailto:hello@thebigear.org">
-                Email Us
-            </a>
+    <!-- New Introductory Paragraph -->
+    <div class="intro-text">
+        <p>At The Big Ear, we believe every problem has a solution waiting to be discovered. Our community-driven platform connects people facing challenges with compassionate listeners and experienced problem-solvers. Whether you're dealing with personal dilemmas, technical issues, or creative blocks, we're here to help you find clarity and actionable solutions. Together, we turn obstacles into opportunities through shared wisdom and collaborative thinking.</p>
+    </div>
+
+    <!-- Two-panel Section -->
+    <div class="content">
+        <div class="panels">
+            <div class="panel" style="background: #f0f8ff;">
+                <h2>Share Your Problem</h2>
+                <p>Describe your challenge in detail. Our system will match you with the best resources and advisors.</p>
+            </div>
+            
+            <div class="panel" style="background: #fff9e6;">
+                <h2>Get Solutions</h2>
+                <p>Receive personalized advice, step-by-step guides, and community support tailored to your situation.</p>
+            </div>
         </div>
-    </section>
+    </div>
 </body>
 </html>
