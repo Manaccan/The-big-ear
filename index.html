@@ -5,151 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Big Ear - Problem Solving Community</title>
     <style>
-        /* ===== BASE STYLES ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: #f8f9fa;
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            padding: 20px;
-        }
-
-        /* ===== HEADER SECTION ===== */
+        /* ===== HEADER ADJUSTMENTS ===== */
         .header {
-            display: flex;
-            align-items: flex-start;
-            gap: 50px;
-            max-width: 1000px;
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+            align-items: flex-start; /* Changed to align logo/text at top */
         }
 
         .logo {
             width: 200px;
-            height: 200px;
-            border-radius: 15px;
-            padding: 20px;
+            height: 250px; /* Increased height */
+            object-fit: contain; /* Ensures logo doesn't stretch */
+            margin-top: -10px; /* Fine-tune vertical alignment */
         }
 
         .text-container {
-            flex: 1;
-            padding-left: 20px; /* Added for alignment */
-        }
-
-        h1 {
-            color: #2a4a6e;
-            font-size: 70px;
-            margin-bottom: 5px; /* Reduced from 15px */
-        }
-
-        h2, h3, h4 {
-            padding-left: 10px; /* Right shift for alignment */
-        }
-
-        h2 {
-            color: #4a6582;
-            font-size: 28px;
-            margin-bottom: 8px;
-            font-weight: 400;
-        }
-
-        h3 {
-            color: #666;
-            font-size: 20px;
-            font-weight: 300;
-            max-width: 500px;
-            margin-bottom: 12px;
-        }
-
-        h4 {
-            color: #4a6582;
-            font-size: 20px;
-            font-style: italic;
-            margin-top: 8px;
-        }
-
-        /* ===== MAIN CONTENT ===== */
-        .content {
-            max-width: 1000px;
-            width: 100%;
-        }
-
-        /* Two-panel layout */
-        .panels {
+            height: 250px; /* Match logo height */
             display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Distribute space between headers */
+        }
+
+        /* ===== NEW CONTACT SECTION ===== */
+        .contact-section {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
             gap: 30px;
             margin-top: 20px;
         }
 
-        .panel {
-            flex: 1;
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .intro-text {
-            color: #4a6582;
+        .contact-links a {
+            color: #2a4a6e;
+            text-decoration: none;
             font-size: 18px;
-            line-height: 1.7;
-            margin: 0 auto 40px;
-            max-width: 800px;
-            text-align: center;
+            padding: 10px 20px;
+            border: 2px solid #2a4a6e;
+            border-radius: 25px;
+            transition: all 0.3s ease;
         }
 
-        /* ===== MOBILE RESPONSIVENESS ===== */
+        .contact-links a:hover {
+            background: #2a4a6e;
+            color: white;
+        }
+
+        /* ===== MOBILE ADJUSTMENTS ===== */
         @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                align-items: center;
-                gap: 30px;
-                padding: 30px;
+            .logo {
+                height: 180px;
+                width: 180px;
             }
-
             .text-container {
-                padding-left: 0;
+                height: auto;
             }
-
-            h1 {
-                font-size: 50px;
-                text-align: center;
-            }
-
-            h2 {
-                font-size: 22px;
-                text-align: center;
-            }
-
-            h3 {
-                font-size: 16px;
-                text-align: center;
-            }
-
-            h4 {
-                font-size: 18px;
-                text-align: center;
-            }
-
-            .panels {
+            .contact-links {
                 flex-direction: column;
-            }
-
-            .intro-text {
-                padding: 0 20px;
-                font-size: 16px;
+                gap: 15px;
             }
         }
     </style>
@@ -158,31 +77,26 @@
     <header class="header">
         <img src="logo.png" alt="The Big Ear Logo" class="logo">
         <div class="text-container">
-            <h1>The Big Ear</h1>
-            <h2>What's Your Problem?</h2>
-            <h3>No seriously, tell us your problem and we'll help solve it!</h3>
+            <div>
+                <h1>The Big Ear</h1>
+                <h2>What's Your Problem?</h2>
+                <h3>No seriously, tell us your problem and we'll help solve it!</h3>
+            </div>
             <h4>We Listen!</h4>
         </div>
     </header>
 
-    <!-- New Introductory Paragraph -->
-    <div class="intro-text">
-        <p>At The Big Ear, we believe every problem has a solution waiting to be discovered. Our community-driven platform connects people facing challenges with compassionate listeners and experienced problem-solvers. Whether you're dealing with personal dilemmas, technical issues, or creative blocks, we're here to help you find clarity and actionable solutions. Together, we turn obstacles into opportunities through shared wisdom and collaborative thinking.</p>
-    </div>
-
-    <!-- Two-panel Section -->
-    <div class="content">
-        <div class="panels">
-            <div class="panel" style="background: #f0f8ff;">
-                <h2>Share Your Problem</h2>
-                <p>Describe your challenge in detail. Our system will match you with the best resources and advisors.</p>
-            </div>
-            
-            <div class="panel" style="background: #fff9e6;">
-                <h2>Get Solutions</h2>
-                <p>Receive personalized advice, step-by-step guides, and community support tailored to your situation.</p>
-            </div>
+    <!-- New Contact Section -->
+    <section class="contact-section">
+        <h2>Join the Conversation</h2>
+        <div class="contact-links">
+            <a href="https://github.com/Manaccan/the-big-ear/discussions" target="_blank">
+                GitHub Discussions
+            </a>
+            <a href="mailto:hello@thebigear.org">
+                Email Us
+            </a>
         </div>
-    </div>
+    </section>
 </body>
 </html>
