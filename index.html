@@ -36,32 +36,29 @@
             margin-bottom: 30px;
         }
 
+        /* LOGO ADJUSTMENTS */
         .logo {
-            width: 200px;
-            height: 200px;
+            width: 200px; /* Adjust this value to resize */
+            height: auto; /* Maintains aspect ratio */
             border-radius: 15px;
-            padding: 20px;
+            margin-top: 10px; /* Aligns logo top with H1 */
         }
 
         .text-container {
             flex: 1;
-            padding-left: 20px; /* Added for alignment */
+            padding-top: 10px; /* Aligns text with logo */
         }
 
         h1 {
             color: #2a4a6e;
             font-size: 70px;
-            margin-bottom: 5px; /* Reduced from 15px */
-        }
-
-        h2, h3, h4 {
-            padding-left: 10px; /* Right shift for alignment */
+            margin-bottom: 15px;
         }
 
         h2 {
             color: #4a6582;
             font-size: 28px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             font-weight: 400;
         }
 
@@ -70,27 +67,31 @@
             font-size: 20px;
             font-weight: 300;
             max-width: 500px;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
 
         h4 {
             color: #4a6582;
             font-size: 20px;
             font-style: italic;
-            margin-top: 8px;
+            margin-bottom: 10px; /* Aligns with logo bottom */
         }
 
-        /* ===== MAIN CONTENT ===== */
-        .content {
-            max-width: 1000px;
-            width: 100%;
+        /* ===== MIDDLE CONTENT ===== */
+        .intro-text {
+            color: #4a6582;
+            font-size: 18px;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-align: center;
         }
 
-        /* Two-panel layout */
         .panels {
             display: flex;
             gap: 30px;
-            margin-top: 20px;
+            max-width: 1000px;
+            margin: 20px auto;
         }
 
         .panel {
@@ -101,13 +102,16 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        .intro-text {
-            color: #4a6582;
-            font-size: 18px;
-            line-height: 1.7;
-            margin: 0 auto 40px;
-            max-width: 800px;
+        /* ===== CONTACT SECTION ===== */
+        .contact-section {
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             text-align: center;
+            margin-top: 40px;
         }
 
         /* ===== MOBILE RESPONSIVENESS ===== */
@@ -119,38 +123,18 @@
                 padding: 30px;
             }
 
-            .text-container {
-                padding-left: 0;
+            .logo {
+                width: 150px;
+                margin-top: 0;
             }
 
-            h1 {
-                font-size: 50px;
-                text-align: center;
-            }
+            h1 { font-size: 50px; text-align: center; }
+            h2 { font-size: 22px; text-align: center; }
+            h3 { font-size: 16px; text-align: center; }
+            h4 { font-size: 18px; text-align: center; }
 
-            h2 {
-                font-size: 22px;
-                text-align: center;
-            }
-
-            h3 {
-                font-size: 16px;
-                text-align: center;
-            }
-
-            h4 {
-                font-size: 18px;
-                text-align: center;
-            }
-
-            .panels {
-                flex-direction: column;
-            }
-
-            .intro-text {
-                padding: 0 20px;
-                font-size: 16px;
-            }
+            .panels { flex-direction: column; }
+            .intro-text { font-size: 16px; padding: 0 20px; }
         }
     </style>
 </head>
@@ -165,24 +149,34 @@
         </div>
     </header>
 
-    <!-- New Introductory Paragraph -->
+    <!-- INTRO PARAGRAPH -->
     <div class="intro-text">
         <p>At The Big Ear, we believe every problem has a solution waiting to be discovered. Our community-driven platform connects people facing challenges with compassionate listeners and experienced problem-solvers. Whether you're dealing with personal dilemmas, technical issues, or creative blocks, we're here to help you find clarity and actionable solutions. Together, we turn obstacles into opportunities through shared wisdom and collaborative thinking.</p>
     </div>
 
-    <!-- Two-panel Section -->
-    <div class="content">
-        <div class="panels">
-            <div class="panel" style="background: #f0f8ff;">
-                <h2>Share Your Problem</h2>
-                <p>Describe your challenge in detail. Our system will match you with the best resources and advisors.</p>
-            </div>
-            
-            <div class="panel" style="background: #fff9e6;">
-                <h2>Get Solutions</h2>
-                <p>Receive personalized advice, step-by-step guides, and community support tailored to your situation.</p>
-            </div>
+    <!-- TWO PANELS -->
+    <div class="panels">
+        <div class="panel" style="background: #f0f8ff;">
+            <h2>Share Your Problem</h2>
+            <p>Describe your challenge in detail. Our system will match you with the best resources and advisors.</p>
+        </div>
+        <div class="panel" style="background: #fff9e6;">
+            <h2>Get Solutions</h2>
+            <p>Receive personalized advice, step-by-step guides, and community support tailored to your situation.</p>
         </div>
     </div>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section">
+        <h2>Get Help Now</h2>
+        <div class="contact-links">
+            <a href="https://github.com/Manaccan/the-big-ear/discussions" target="_blank">
+                Ask in GitHub Discussions
+            </a>
+            <a href="mailto:hello@thebigear.org">
+                Email Us
+            </a>
+        </div>
+    </section>
 </body>
 </html>
