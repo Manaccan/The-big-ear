@@ -167,16 +167,98 @@
     </div>
 
     <!-- CONTACT SECTION -->
-    <section class="contact-section">
-        <h2>Get Help Now</h2>
-        <div class="contact-links">
-            <a href="https://github.com/Manaccan/the-big-ear/discussions" target="_blank">
-                Ask in GitHub Discussions
-            </a>
-            <a href="mailto:hello@thebigear.org">
-                Email Us
-            </a>
-        </div>
-    </section>
-</body>
-</html>
+   <!-- Updated Contact Section -->
+<section class="contact-section">
+    <h2>Connect With Us</h2>
+    
+    <!-- GitHub Discussions Card -->
+    <div class="contact-card">
+        <h3>Community Support</h3>
+        <a href="https://github.com/Manaccan/the-big-ear/discussions" 
+           target="_blank" 
+           class="github-link">
+            Visit GitHub Discussions
+        </a>
+        <p>Get help from our community forum</p>
+    </div>
+
+    <!-- Email Card -->
+    <div class="contact-card">
+        <h3>Direct Contact</h3>
+        <a href="mailto:hello@thebigear.org" 
+           class="email-link">
+            Email Our Team
+        </a>
+        <p>For private inquiries and partnerships</p>
+    </div>
+</section>
+
+<style>
+    /* Updated Contact Section Styles */
+    .contact-section {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 30px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .contact-card {
+        margin: 25px 0;
+        padding: 25px;
+        border-radius: 15px;
+        background: #f8f9fa;
+    }
+
+    .github-link {
+        display: inline-block;
+        background: #2a4a6e;
+        color: white!important;
+        padding: 12px 35px;
+        border-radius: 30px;
+        text-decoration: none;
+        margin: 15px 0;
+        transition: background 0.3s ease;
+    }
+
+    .email-link {
+        display: inline-block;
+        background: #4a6582;
+        color: white!important;
+        padding: 12px 35px;
+        border-radius: 30px;
+        text-decoration: none;
+        margin: 15px 0;
+        transition: background 0.3s ease;
+    }
+
+    .github-link:hover {
+        background: #1a3a5e;
+    }
+
+    .email-link:hover {
+        background: #3a5572;
+    }
+
+    .contact-card h3 {
+        color: #2a4a6e;
+        margin-bottom: 10px;
+    }
+
+    .contact-card p {
+        color: #666;
+        font-size: 0.9em;
+    }
+
+    @media (max-width: 768px) {
+        .contact-card {
+            text-align: center;
+        }
+        
+        .github-link,
+        .email-link {
+            width: 100%;
+        }
+    }
+</style>
