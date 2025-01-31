@@ -1,119 +1,4 @@
-
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Big Ear - Problem Solving Community</title>
-    <style>
-        /* (Keep all existing styles here) */
-
-        /* ===== FOOTER STYLES ===== */
-        .site-footer {
-            background: white;
-            padding: 40px 20px;
-            margin-top: 60px;
-            border-top: 1px solid #e0e0e0;
-            width: 100%;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            gap: 40px;
-        }
-
-        .footer-section h4 {
-            color: #2a4a6e;
-            margin-bottom: 15px;
-            font-size: 1.1em;
-        }
-
-        .footer-section ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-section li {
-            margin-bottom: 10px;
-        }
-
-        .footer-section a {
-            color: #4a6582;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section a:hover {
-            color: #2a4a6e;
-            text-decoration: underline;
-        }
-
-        .footer-brand {
-            text-align: right;
-            max-width: 200px;
-        }
-
-        .footer-logo {
-            width: 120px;
-            height: auto;
-            margin-bottom: 15px;
-        }
-
-        .copyright {
-            color: #666;
-            font-size: 0.9em;
-            line-height: 1.4;
-        }
-
-        @media (max-width: 768px) {
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            .footer-brand {
-                text-align: center;
-                margin: 0 auto;
-            }
-            .footer-section {
-                margin-bottom: 30px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- (Keep existing header, panels, and contact section here) -->
-
-    <!-- NEW FOOTER -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Explore</h4>
-                <ul>
-                    <li><a href="/about">About Us</a></li>
-                    <li><a href="/professionals">For Professionals</a></li>
-                    <li><a href="/investors">For Investors</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h4>Connect</h4>
-                <ul>
-                    <li><a href="https://github.com/Manaccan/the-big-ear/discussions" target="_blank">Community Forum</a></li>
-                    <li><a href="mailto:hello@thebigear.org">Contact Support</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-brand">
-                <img src="logo.png" alt="The Big Ear Logo" class="footer-logo">
-                <p class="copyright">© 2024 EduAI-Solutions<br>Solving Problems, Together</p>
-            </div>
-        </div>
-    </footer>
-</body>
-</html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -151,48 +36,24 @@
             margin-bottom: 30px;
         }
 
-        /* LOGO ADJUSTMENTS */
         .logo {
-            width: 250px; /* Adjust this value to resize */
-            height: auto; /* Maintains aspect ratio */
+            width: 200px;
+            height: auto;
             border-radius: 15px;
-            margin-top: 10px; /* Aligns logo top with H1 */
+            margin-top: 10px;
         }
 
         .text-container {
             flex: 1;
-            padding-top: 10px; /* Aligns text with logo */
+            padding-top: 10px;
         }
 
-        h1 {
-            color: #2a4a6e;
-            font-size: 70px;
-            margin-bottom: 15px;
-        }
+        h1 { color: #2a4a6e; font-size: 70px; margin-bottom: 15px; }
+        h2 { color: #4a6582; font-size: 28px; margin-bottom: 10px; font-weight: 400; }
+        h3 { color: #666; font-size: 20px; font-weight: 300; margin-bottom: 15px; }
+        h4 { color: #4a6582; font-size: 20px; font-style: italic; margin-bottom: 10px; }
 
-        h2 {
-            color: #4a6582;
-            font-size: 28px;
-            margin-bottom: 10px;
-            font-weight: 400;
-        }
-
-        h3 {
-            color: #666;
-            font-size: 20px;
-            font-weight: 300;
-            max-width: 500px;
-            margin-bottom: 15px;
-        }
-
-        h4 {
-            color: #4a6582;
-            font-size: 20px;
-            font-style: italic;
-            margin-bottom: 10px; /* Aligns with logo bottom */
-        }
-
-        /* ===== MIDDLE CONTENT ===== */
+        /* ===== MAIN CONTENT ===== */
         .intro-text {
             color: #4a6582;
             font-size: 18px;
@@ -217,176 +78,52 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        /* ===== CONTACT SECTION ===== */
-        .contact-section {
+        /* ===== PROBLEM FORM ===== */
+        .problem-form {
             max-width: 1000px;
             width: 100%;
             background: white;
-            padding: 30px;
+            padding: 40px;
             border-radius: 20px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            text-align: center;
-            margin-top: 40px;
+            margin: 40px 0;
         }
 
-        /* ===== MOBILE RESPONSIVENESS ===== */
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                align-items: center;
-                gap: 30px;
-                padding: 30px;
-            }
-
-            .logo {
-                width: 150px;
-                margin-top: 0;
-            }
-
-            h1 { font-size: 50px; text-align: center; }
-            h2 { font-size: 22px; text-align: center; }
-            h3 { font-size: 16px; text-align: center; }
-            h4 { font-size: 18px; text-align: center; }
-
-            .panels { flex-direction: column; }
-            .intro-text { font-size: 16px; padding: 0 20px; }
+        .form-group {
+            margin-bottom: 25px;
         }
-    </style>
-</head>
-<body>
-    <header class="header">
-        <img src="logo.png" alt="The Big Ear Logo" class="logo">
-        <div class="text-container">
-            <h1>The Big Ear</h1>
-            <h2>What's Your Problem?</h2>
-            <h3>No seriously, tell us your problem and we'll help solve it!</h3>
-            <h4>We Listen!</h4>
-        </div>
-    </header>
 
-    <!-- INTRO PARAGRAPH -->
-    <div class="intro-text">
-        <p>At The Big Ear, we believe every problem has a solution waiting to be discovered. Our community-driven platform connects people facing challenges with compassionate listeners and experienced problem-solvers. Whether you're dealing with personal dilemmas, technical issues, or creative blocks, we're here to help you find clarity and actionable solutions. Together, we turn obstacles into opportunities through shared wisdom and collaborative thinking.</p>
-    </div>
-
-    <!-- TWO PANELS -->
-    <div class="panels">
-        <div class="panel" style="background: #f0f8ff;">
-            <h2>Share Your Problem</h2>
-            <p>Describe your challenge in detail. Our system will match you with the best resources and advisors.</p>
-        </div>
-        <div class="panel" style="background: #fff9e6;">
-            <h2>Get Solutions</h2>
-            <p>Receive personalized advice, step-by-step guides, and community support tailored to your situation.</p>
-        </div>
-    </div>
-
-    <!-- CONTACT SECTION -->
-   <!-- Updated Contact Section -->
-<section class="contact-section">
-    <h2>Connect With Us</h2>
-    
-    <!-- GitHub Discussions Card -->
-    <div class="contact-card">
-        <h3>Community Support</h3>
-        <a href="https://github.com/Manaccan/the-big-ear/discussions" 
-           target="_blank" 
-           class="github-link">
-            Visit GitHub Discussions
-        </a>
-        <p>Get help from our community forum</p>
-    </div>
-
-    <!-- Email Card -->
-    <div class="contact-card">
-        <h3>Direct Contact</h3>
-        <a href="mailto:hello@thebigear.org" 
-           class="email-link">
-            Email Our Team
-        </a>
-        <p>For private inquiries and partnerships</p>
-    </div>
-</section>
-
-<style>
-    /* Updated Contact Section Styles */
-    .contact-section {
-        max-width: 1000px;
-        margin: 40px auto;
-        padding: 30px;
-        background: white;
-        border-radius: 20px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-
-    .contact-card {
-        margin: 25px 0;
-        padding: 25px;
-        border-radius: 15px;
-        background: #f8f9fa;
-    }
-
-    .github-link {
-        display: inline-block;
-        background: #2a4a6e;
-        color: white!important;
-        padding: 12px 35px;
-        border-radius: 30px;
-        text-decoration: none;
-        margin: 15px 0;
-        transition: background 0.3s ease;
-    }
-
-    .email-link {
-        display: inline-block;
-        background: #4a6582;
-        color: white!important;
-        padding: 12px 35px;
-        border-radius: 30px;
-        text-decoration: none;
-        margin: 15px 0;
-        transition: background 0.3s ease;
-    }
-
-    .github-link:hover {
-        background: #1a3a5e;
-    }
-
-    .email-link:hover {
-        background: #3a5572;
-    }
-
-    .contact-card h3 {
-        color: #2a4a6e;
-        margin-bottom: 10px;
-    }
-
-    .contact-card p {
-        color: #666;
-        font-size: 0.9em;
-    }
-
-    @media (max-width: 768px) {
-        .contact-card {
-            text-align: center;
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2a4a6e;
+            font-weight: 500;
         }
-        
-        .github-link,
-        .email-link {
+
+        input, textarea, select {
             width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
         }
-    }
-</style>
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Big Ear - Problem Solving Community</title>
-    <style>
-        /* (Keep all existing styles here) */
 
-        /* ===== FOOTER STYLES ===== */
+        button.submit-btn {
+            background: #2a4a6e;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button.submit-btn:hover {
+            background: #1a3a5e;
+        }
+
+        /* ===== FOOTER ===== */
         .site-footer {
             background: white;
             padding: 40px 20px;
@@ -446,25 +183,80 @@
             line-height: 1.4;
         }
 
+        /* ===== MOBILE STYLES ===== */
         @media (max-width: 768px) {
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            .footer-brand {
-                text-align: center;
-                margin: 0 auto;
-            }
-            .footer-section {
-                margin-bottom: 30px;
-            }
+            .header { flex-direction: column; align-items: center; padding: 30px; }
+            .logo { width: 150px; margin-top: 0; }
+            h1 { font-size: 50px; text-align: center; }
+            h2 { font-size: 22px; text-align: center; }
+            h3 { font-size: 16px; text-align: center; }
+            h4 { font-size: 18px; text-align: center; }
+            .panels { flex-direction: column; }
+            .problem-form { padding: 25px; }
+            .footer-content { flex-direction: column; text-align: center; }
+            .footer-brand { text-align: center; margin: 0 auto; }
         }
     </style>
 </head>
 <body>
-    <!-- (Keep existing header, panels, and contact section here) -->
+    <!-- HEADER -->
+    <header class="header">
+        <img src="logo.png" alt="The Big Ear Logo" class="logo">
+        <div class="text-container">
+            <h1>The Big Ear</h1>
+            <h2>What's Your Problem?</h2>
+            <h3>No seriously, tell us your problem and we'll help solve it!</h3>
+            <h4>We Listen!</h4>
+        </div>
+    </header>
 
-    <!-- NEW FOOTER -->
+    <!-- INTRO TEXT -->
+    <div class="intro-text">
+        <p>At The Big Ear, we believe every problem has a solution waiting to be discovered. Our community-driven platform connects people facing challenges with compassionate listeners and experienced problem-solvers.</p>
+    </div>
+
+    <!-- PANELS -->
+    <div class="panels">
+        <div class="panel" style="background: #f0f8ff;">
+            <h2>Share Your Problem</h2>
+            <p>Describe your challenge in detail. Our system will match you with the best resources and advisors.</p>
+        </div>
+        <div class="panel" style="background: #fff9e6;">
+            <h2>Get Solutions</h2>
+            <p>Receive personalized advice, step-by-step guides, and community support tailored to your situation.</p>
+        </div>
+    </div>
+
+    <!-- PROBLEM FORM -->
+    <form class="problem-form" action="https://formspree.io/f/xgvoykab" method="POST">
+        <h2>Submit Your Problem</h2>
+        
+        <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" placeholder="name@example.com" required>
+        </div>
+
+        <div class="form-group">
+            <label for="problem-type">Problem Type</label>
+            <select id="problem-type" name="problem-type" required>
+                <option value="">Select a category</option>
+                <option value="technical">Technical Issue</option>
+                <option value="personal">Personal Matter</option>
+                <option value="business">Business Challenge</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Problem Description</label>
+            <textarea id="message" name="message" rows="6" required
+                placeholder="Describe your problem in detail..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send to Our Experts</button>
+    </form>
+
+    <!-- FOOTER -->
     <footer class="site-footer">
         <div class="footer-content">
             <div class="footer-section">
@@ -490,5 +282,34 @@
             </div>
         </div>
     </footer>
+
+    <!-- FORM SUBMISSION SCRIPT -->
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('.problem-form');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+                
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        alert('Thank you! Your problem has been submitted.');
+                        form.reset();
+                    } else {
+                        alert('Oops! There was a problem submitting your form.');
+                    }
+                }).catch(error => {
+                    alert('Oops! There was a problem submitting your form.');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
