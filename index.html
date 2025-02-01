@@ -37,7 +37,7 @@
         }
 
         .logo {
-            width: 250px;
+            width: 200px;
             height: auto;
             border-radius: 15px;
             margin-top: 10px;
@@ -196,6 +196,36 @@
             .footer-content { flex-direction: column; text-align: center; }
             .footer-brand { text-align: center; margin: 0 auto; }
         }
+		/* Document Modal Styles */
+.doc-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    margin: 10% auto;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 15px;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    right: 25px;
+    top: 15px;
+    font-size: 32px;
+    cursor: pointer;
+    color: #2a4a6e;
+}
     </style>
 </head>
 <body>
@@ -260,13 +290,13 @@
     <footer class="site-footer">
         <div class="footer-content">
             <div class="footer-section">
-                <h4>Explore</h4>
-                <ul>
-                    <li><a href="/about">About Us</a></li>
-                    <li><a href="/professionals">For Professionals</a></li>
-                    <li><a href="/investors">For Investors</a></li>
-                </ul>
-            </div>
+    <h4>Explore</h4>
+    <ul>
+        <li><a href="#" onclick="showDocForm('about')">About Us</a></li>
+        <li><a href="#" onclick="showDocForm('professionals')">For Professionals</a></li>
+        <li><a href="#" onclick="showDocForm('investors')">For Investors</a></li>
+    </ul>
+</div>
             
             <div class="footer-section">
                 <h4>Connect</h4>
@@ -311,5 +341,79 @@
             });
         });
     </script>
+	<!-- Document Request Modal -->
+<div id="docModal" class="doc-modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeDocModal()">&times;</span>
+        <h2 id="modalTitle">Download Document</h2>
+        <form id="docRequestForm" action="https://formspree.io/f/YOUR_NEW_FORMSPREE_ID" method="POST">
+            <input type="hidden" name="document_type" id="docType">
+            
+            <div class="form-group">
+                <label>Your Full Name</label>
+                <input type="text" name="name" required 
+                    placeholder="John Smith" style="width: 100%;">
+            </div>
+            
+            <div class="form-group">
+                <label>Your Email</label>
+                <input type="email" name="email" required 
+                    placeholder="john@company.com" style="width: 100%;">
+            </div>
+
+            <button type="submit" class="submit-btn">
+                Send Document
+            </button>
+        </form>
+    </div>
+</div>
+<script>
+    // Document Request System
+    function showDocForm(docType) {
+        const titles = {
+            about: "About Us Overview",
+            professionals: "Professional Partnerships Guide",
+            investors: "Investor Prospectus"
+        };
+        
+        document.getElementById('docType').value = docType;
+        document.getElementById('modalTitle').textContent = titles[docType];
+        document.getElementById('docModal').style.display = 'block';
+    }
+
+    function closeDocModal() {
+        document.getElementById('docModal').style.display = 'none';
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('docModal')) {
+            closeDocModal();
+        }
+    }
+
+    // Handle form submission
+    document.getElementById('docRequestForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        fetch(this.action, {
+            method: 'POST',
+            body: new FormData(this),
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                alert('Document sent! Check your email.');
+                closeDocModal();
+                this.reset();
+            } else {
+                alert('Error sending request. Please try again.');
+            }
+        }).catch(error => {
+            alert('Connection error. Please check your network.');
+        });
+    });
+</script>
 </body>
 </html>
