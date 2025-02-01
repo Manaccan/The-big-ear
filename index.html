@@ -415,5 +415,139 @@
         });
     });
 </script>
+<!-- Add to your existing HTML -->
+<div id="docModal" class="doc-modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeDocModal()">&times;</span>
+        <h2 id="modalTitle">Download Document</h2>
+        <form id="docRequestForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+            <input type="hidden" name="document_type" id="docType">
+            
+            <div class="form-group">
+                <label>Your Full Name</label>
+                <input type="text" name="name" required 
+                    placeholder="John Smith" class="form-input">
+            </div>
+            
+            <div class="form-group">
+                <label>Your Email</label>
+                <input type="email" name="email" required 
+                    placeholder="john@company.com" class="form-input">
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <span class="spinner" id="spinner" style="display: none;">⏳</span>
+                Send Document Now
+            </button>
+        </form>
+    </div>
+</div>
+
+<style>
+    /* Document Modal Styles */
+    .doc-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 1000;
+    }
+
+    .modal-content {
+        background: white;
+        margin: 10% auto;
+        padding: 30px;
+        width: 90%;
+        max-width: 500px;
+        border-radius: 15px;
+        position: relative;
+    }
+
+    .close-modal {
+        position: absolute;
+        right: 25px;
+        top: 15px;
+        font-size: 32px;
+        cursor: pointer;
+        color: #2a4a6e;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        margin: 8px 0;
+    }
+
+    .spinner {
+        animation: spin 1s linear infinite;
+        display: inline-block;
+    }
+
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+</style>
+
+<script>
+    // Enhanced Document Request System
+    const docLinks = {
+        about: 'https://manaccan.github.io/the-big-ear/documents/about-us.pdf',
+        professionals: 'https://manaccan.github.io/the-big-ear/documents/professionals-guide.pdf',
+        investors: 'https://manaccan.github.io/the-big-ear/documents/investor-prospectus.pdf'
+    };
+
+    function showDocForm(docType) {
+        const titles = {
+            about: "About Us Overview",
+            professionals: "Professional Partnerships Guide",
+            investors: "Investor Prospectus"
+        };
+        
+        document.getElementById('docType').value = docType;
+        document.getElementById('modalTitle').textContent = titles[docType];
+        document.getElementById('docModal').style.display = 'block';
+    }
+
+    function closeDocModal() {
+        document.getElementById('docModal').style.display = 'none';
+    }
+
+    document.getElementById('docRequestForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const spinner = document.getElementById('spinner');
+        const submitBtn = document.querySelector('#docRequestForm button');
+        
+        spinner.style.display = 'inline-block';
+        submitBtn.disabled = true;
+
+        const formData = new FormData(this);
+        formData.append('_subject', `Document Request: ${formData.get('document_type')}`);
+        formData.append('_replyto', formData.get('email'));
+        
+        fetch(this.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        }).then(response => {
+            if (response.ok) {
+                // Send direct download link
+                const docType = formData.get('document_type');
+                window.location.href = docLinks[docType];
+                closeDocModal();
+            }
+        }).catch(error => {
+            alert('Error sending request. Please email us directly.');
+        }).finally(() => {
+            spinner.style.display = 'none';
+            submitBtn.disabled = false;
+        });
+    });
+</script>
 </body>
 </html>
