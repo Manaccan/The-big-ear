@@ -1,607 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Big Ear - Problem Solving Community</title>
-    <style>
-        /* ===== BASE STYLES ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: #f8f9fa;
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            padding: 20px;
-        }
-
-        /* ===== HEADER SECTION ===== */
-        .header {
-            display: flex;
-            align-items: flex-start;
-            gap: 50px;
-            max-width: 1000px;
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
-
-        .logo {
-            width: 200px;
-            height: auto;
-            border-radius: 15px;
-            margin-top: 10px;
-        }
-
-        .text-container {
-            flex: 1;
-            padding-top: 10px;
-        }
-
-        h1 { color: #2a4a6e; font-size: 70px; margin-bottom: 15px; }
-        h2 { color: #4a6582; font-size: 28px; margin-bottom: 10px; font-weight: 400; }
-        h3 { color: #666; font-size: 20px; font-weight: 300; margin-bottom: 15px; }
-        h4 { color: #4a6582; font-size: 20px; font-style: italic; margin-bottom: 10px; }
-
-        /* ===== MAIN CONTENT ===== */
-        .intro-text {
-            color: #4a6582;
-            font-size: 18px;
-            line-height: 1.7;
-            max-width: 800px;
-            margin: 0 auto 40px;
-            text-align: center;
-        }
-
-        .panels {
-            display: flex;
-            gap: 30px;
-            max-width: 1000px;
-            margin: 20px auto;
-        }
-
-        .panel {
-            flex: 1;
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        /* ===== PROBLEM FORM ===== */
-        .problem-form {
-            max-width: 1000px;
-            width: 100%;
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin: 40px 0;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #2a4a6e;
-            font-weight: 500;
-        }
-
-        input, textarea, select {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-
-        button.submit-btn {
-            background: #2a4a6e;
-            color: white;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 30px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        button.submit-btn:hover {
-            background: #1a3a5e;
-        }
-
-        /* ===== FOOTER ===== */
-        .site-footer {
-            background: white;
-            padding: 40px 20px;
-            margin-top: 60px;
-            border-top: 1px solid #e0e0e0;
-            width: 100%;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            gap: 40px;
-        }
-
-        .footer-section h4 {
-            color: #2a4a6e;
-            margin-bottom: 15px;
-            font-size: 1.1em;
-        }
-
-        .footer-section ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-section li {
-            margin-bottom: 10px;
-        }
-
-        .footer-section a {
-            color: #4a6582;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section a:hover {
-            color: #2a4a6e;
-            text-decoration: underline;
-        }
-
-        .footer-brand {
-            text-align: right;
-            max-width: 200px;
-        }
-
-        .footer-logo {
-            width: 120px;
-            height: auto;
-            margin-bottom: 15px;
-        }
-
-        .copyright {
-            color: #666;
-            font-size: 0.9em;
-            line-height: 1.4;
-        }
-
-        /* ===== MOBILE STYLES ===== */
-        @media (max-width: 768px) {
-            .header { flex-direction: column; align-items: center; padding: 30px; }
-            .logo { width: 150px; margin-top: 0; }
-            h1 { font-size: 50px; text-align: center; }
-            h2 { font-size: 22px; text-align: center; }
-            h3 { font-size: 16px; text-align: center; }
-            h4 { font-size: 18px; text-align: center; }
-            .panels { flex-direction: column; }
-            .problem-form { padding: 25px; }
-            .footer-content { flex-direction: column; text-align: center; }
-            .footer-brand { text-align: center; margin: 0 auto; }
-        }
-		/* Document Modal Styles */
-.doc-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    z-index: 1000;
-}
-
-.modal-content {
-    background: white;
-    margin: 10% auto;
-    padding: 30px;
-    width: 90%;
-    max-width: 500px;
-    border-radius: 15px;
-    position: relative;
-}
-
-.close-modal {
-    position: absolute;
-    right: 25px;
-    top: 15px;
-    font-size: 32px;
-    cursor: pointer;
-    color: #2a4a6e;
-}
-    </style>
-</head>
-<body>
-    <!-- HEADER -->
-    <header class="header">
-        <img src="logo.png" alt="The Big Ear Logo" class="logo">
-        <div class="text-container">
-            <h1>The Big Ear</h1>
-            <h2>What's Your Problem?</h2>
-            <h3>No seriously, tell us your problem and we'll help solve it!</h3>
-            <h4>We Listen!</h4>
-        </div>
-    </header>
-
-    <!-- INTRO TEXT -->
-    <div class="intro-text">
-        <p>At The Big Ear, we believe every problem has a solution waiting to be discovered. Our community-driven platform connects people facing challenges with compassionate listeners and experienced problem-solvers.</p>
-    </div>
-
-    <!-- PANELS -->
-    <div class="panels">
-        <div class="panel" style="background: #f0f8ff;">
-            <h2>Share Your Problem</h2>
-            <p>Describe your challenge in detail. Our system will match you with the best resources and advisors.</p>
-        </div>
-        <div class="panel" style="background: #fff9e6;">
-            <h2>Get Solutions</h2>
-            <p>Receive personalized advice, step-by-step guides, and community support tailored to your situation.</p>
-        </div>
-    </div>
-
-    <!-- PROBLEM FORM -->
-    <form class="problem-form" action="https://formspree.io/f/xgvoykab" method="POST">
-        <h2>Submit Your Problem</h2>
-        
-        <div class="form-group">
-            <label for="email">Your Email</label>
-            <input type="email" id="email" name="email" placeholder="name@example.com" required>
-        </div>
-
-        <div class="form-group">
-            <label for="problem-type">Problem Type</label>
-            <select id="problem-type" name="problem-type" required>
-                <option value="">Select a category</option>
-                <option value="technical">Technical Issue</option>
-                <option value="personal">Personal Matter</option>
-                <option value="business">Business Challenge</option>
-                <option value="other">Other</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="message">Problem Description</label>
-            <textarea id="message" name="message" rows="6" required
-                placeholder="Describe your problem in detail..."></textarea>
-        </div>
-
-        <button type="submit" class="submit-btn">Send to Our Experts</button>
-    </form>
-
-    <!-- FOOTER -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-section">
-    <h4>Explore</h4>
-    <ul>
-        <li><a href="#" onclick="showDocForm('about')">About Us</a></li>
-        <li><a href="#" onclick="showDocForm('professionals')">For Professionals</a></li>
-        <li><a href="#" onclick="showDocForm('investors')">For Investors</a></li>
-    </ul>
-</div>
-            
-            <div class="footer-section">
-                <h4>Connect</h4>
-                <ul>
-                    <li><a href="https://github.com/Manaccan/the-big-ear/discussions" target="_blank">Community Forum</a></li>
-                    <li><a href="mailto:hello@thebigear.org">Contact Support</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-brand">
-                <img src="logo.png" alt="The Big Ear Logo" class="footer-logo">
-                <p class="copyright">© 2024 EduAI-Solutions<br>Solving Problems, Together</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- FORM SUBMISSION SCRIPT -->
-    <script>
-        window.addEventListener('DOMContentLoaded', function() {
-            const form = document.querySelector('.problem-form');
-            
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const formData = new FormData(form);
-                
-                fetch(form.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                }).then(response => {
-                    if (response.ok) {
-                        alert('Thank you! Your problem has been submitted.');
-                        form.reset();
-                    } else {
-                        alert('Oops! There was a problem submitting your form.');
-                    }
-                }).catch(error => {
-                    alert('Oops! There was a problem submitting your form.');
-                });
-            });
-        });
-    </script>
-	<!-- Document Request Modal -->
+<!-- Keep only ONE copy of the modal in your HTML -->
 <div id="docModal" class="doc-modal">
     <div class="modal-content">
         <span class="close-modal" onclick="closeDocModal()">&times;</span>
         <h2 id="modalTitle">Download Document</h2>
-        <form id="docRequestForm" action="https://formspree.io/f/YOUR_NEW_FORMSPREE_ID" method="POST">
+        <form id="docRequestForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
             <input type="hidden" name="document_type" id="docType">
             
             <div class="form-group">
                 <label>Your Full Name</label>
-                <input type="text" name="name" required 
-                    placeholder="John Smith" style="width: 100%;">
+                <input type="text" name="name" required class="form-input">
             </div>
             
             <div class="form-group">
                 <label>Your Email</label>
-                <input type="email" name="email" required 
-                    placeholder="john@company.com" style="width: 100%;">
+                <input type="email" name="email" required class="form-input">
             </div>
 
             <button type="submit" class="submit-btn">
+                <span class="spinner" style="display: none;">⏳</span>
                 Send Document
             </button>
         </form>
     </div>
 </div>
-<script>
-    // Document Request System
-    function showDocForm(docType) {
-        const titles = {
-            about: "About Us Overview",
-            professionals: "Professional Partnerships Guide",
-            investors: "Investor Prospectus"
-        };
-        
-        document.getElementById('docType').value = docType;
-        document.getElementById('modalTitle').textContent = titles[docType];
-        document.getElementById('docModal').style.display = 'block';
-    }
-
-    function closeDocModal() {
-        document.getElementById('docModal').style.display = 'none';
-    }
-
-    // Close modal when clicking outside
-    window.onclick = function(event) {
-        if (event.target == document.getElementById('docModal')) {
-            closeDocModal();
-        }
-    }
-
-    // Handle form submission
-    document.getElementById('docRequestForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        fetch(this.action, {
-            method: 'POST',
-            body: new FormData(this),
-            headers: {
-                'Accept': 'application/json'
-            }
-        }).then(response => {
-            if (response.ok) {
-                alert('Document sent! Check your email.');
-                closeDocModal();
-                this.reset();
-            } else {
-                alert('Error sending request. Please try again.');
-            }
-        }).catch(error => {
-            alert('Connection error. Please check your network.');
-        });
-    });
-</script>
-<!-- Add to your existing HTML -->
-<div id="docModal" class="doc-modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeDocModal()">&times;</span>
-        <h2 id="modalTitle">Download Document</h2>
-        <form id="docRequestForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-            <input type="hidden" name="document_type" id="docType">
-            
-            <div class="form-group">
-                <label>Your Full Name</label>
-                <input type="text" name="name" required 
-                    placeholder="John Smith" class="form-input">
-            </div>
-            
-            <div class="form-group">
-                <label>Your Email</label>
-                <input type="email" name="email" required 
-                    placeholder="john@company.com" class="form-input">
-            </div>
-
-            <button type="submit" class="submit-btn">
-                <span class="spinner" id="spinner" style="display: none;">⏳</span>
-                Send Document Now
-            </button>
-        </form>
-    </div>
-</div>
-
-<style>
-    /* Document Modal Styles */
-    .doc-modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.5);
-        z-index: 1000;
-    }
-
-    .modal-content {
-        background: white;
-        margin: 10% auto;
-        padding: 30px;
-        width: 90%;
-        max-width: 500px;
-        border-radius: 15px;
-        position: relative;
-    }
-
-    .close-modal {
-        position: absolute;
-        right: 25px;
-        top: 15px;
-        font-size: 32px;
-        cursor: pointer;
-        color: #2a4a6e;
-    }
-
-    .form-input {
-        width: 100%;
-        padding: 12px;
-        border: 2px solid #e0e0e0;
-        border-radius: 8px;
-        margin: 8px 0;
-    }
-
-    .spinner {
-        animation: spin 1s linear infinite;
-        display: inline-block;
-    }
-
-    @keyframes spin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-    }
-</style>
 
 <script>
-    // Enhanced Document Request System
-    const docLinks = {
-        about: 'https://manaccan.github.io/the-big-ear/documents/about-us.pdf',
-        professionals: 'https://manaccan.github.io/the-big-ear/documents/professionals-guide.pdf',
-        investors: 'https://manaccan.github.io/the-big-ear/documents/investor-prospectus.pdf'
-    };
-
-    function showDocForm(docType) {
-        const titles = {
-            about: "About Us Overview",
-            professionals: "Professional Partnerships Guide",
-            investors: "Investor Prospectus"
-        };
-        
-        document.getElementById('docType').value = docType;
-        document.getElementById('modalTitle').textContent = titles[docType];
-        document.getElementById('docModal').style.display = 'block';
-    }
-
-    function closeDocModal() {
-        document.getElementById('docModal').style.display = 'none';
-    }
-
-    document.getElementById('docRequestForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const spinner = document.getElementById('spinner');
-        const submitBtn = document.querySelector('#docRequestForm button');
-        
-        spinner.style.display = 'inline-block';
-        submitBtn.disabled = true;
-
-        const formData = new FormData(this);
-        formData.append('_subject', `Document Request: ${formData.get('document_type')}`);
-        formData.append('_replyto', formData.get('email'));
-        
-        fetch(this.action, {
-            method: 'POST',
-            body: formData,
-            headers: { 'Accept': 'application/json' }
-        }).then(response => {
-            if (response.ok) {
-                // Send direct download link
-                const docType = formData.get('document_type');
-                window.location.href = docLinks[docType];
-                closeDocModal();
-            }
-        }).catch(error => {
-            alert('Error sending request. Please email us directly.');
-        }).finally(() => {
-            spinner.style.display = 'none';
-            submitBtn.disabled = false;
-        });
-    });
-	// Add to script
-const isValidRequest = (email, docType) => {
-    const emailDomain = email.split('@')[1];
-    const allowedDomains = ['gmail.com', 'company.com']; // Add your allowed domains
-    return allowedDomains.includes(emailDomain) && docLinks.hasOwnProperty(docType);
-};
-</script>
-<!-- Add this before </body> -->
-<div id="docModal" class="doc-modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeDocModal()">&times;</span>
-        <h2 id="modalTitle">Get Document</h2>
-        <form id="docRequestForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-            <input type="hidden" name="document_type" id="docType">
-            
-            <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" name="name" required class="form-input">
-            </div>
-            
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" required class="form-input">
-            </div>
-
-            <button type="submit" class="submit-btn">
-                <span id="spinner" style="display:none;">⏳ Sending...</span>
-                <span id="buttonText">Get Document Now</span>
-            </button>
-        </form>
-    </div>
-</div>
-
-<script>
-    // Document Links (Update with your GitHub URLs)
+    // Document Request System - Only one copy needed
     const DOCUMENT_LINKS = {
         about: 'https://manaccan.github.io/the-big-ear/documents/about-us.pdf',
         professionals: 'https://manaccan.github.io/the-big-ear/documents/professionals-guide.pdf',
         investors: 'https://manaccan.github.io/the-big-ear/documents/investor-prospectus.pdf'
     };
 
-    // Form Handling
+    function showDocForm(docType) {
+        const titles = {
+            about: "About Us Overview",
+            professionals: "Professional Partnerships Guide",
+            investors: "Investor Prospectus"
+        };
+        
+        if (!DOCUMENT_LINKS[docType]) {
+            alert('Document not available. Please try again later.');
+            return;
+        }
+        
+        document.getElementById('docType').value = docType;
+        document.getElementById('modalTitle').textContent = titles[docType];
+        document.getElementById('docModal').style.display = 'block';
+    }
+
+    function closeDocModal() {
+        document.getElementById('docModal').style.display = 'none';
+    }
+
+    // Form submission handler
     document.getElementById('docRequestForm').addEventListener('submit', async (e) => {
         e.preventDefault();
-        
         const form = e.target;
-        const spinner = document.getElementById('spinner');
-        const buttonText = document.getElementById('buttonText');
+        const spinner = form.querySelector('.spinner');
+        const submitBtn = form.querySelector('button');
         
-        // Show loading state
-        spinner.style.display = 'inline';
-        buttonText.style.display = 'none';
-
         try {
+            spinner.style.display = 'inline-block';
+            submitBtn.disabled = true;
+
             // Submit to Formspree
             await fetch(form.action, {
                 method: 'POST',
@@ -609,11 +71,10 @@ const isValidRequest = (email, docType) => {
                 headers: { 'Accept': 'application/json' }
             });
 
-            // Direct download after submission
+            // Direct download
             const docType = document.getElementById('docType').value;
             window.open(DOCUMENT_LINKS[docType], '_blank');
             
-            // Close modal
             closeDocModal();
             form.reset();
 
@@ -621,9 +82,14 @@ const isValidRequest = (email, docType) => {
             alert('Error: Please email us directly at hello@thebigear.org');
         } finally {
             spinner.style.display = 'none';
-            buttonText.style.display = 'inline';
+            submitBtn.disabled = false;
         }
     });
+
+    // Close modal when clicking outside
+    window.onclick = (event) => {
+        if (event.target === document.getElementById('docModal')) {
+            closeDocModal();
+        }
+    };
 </script>
-</body>
-</html>
