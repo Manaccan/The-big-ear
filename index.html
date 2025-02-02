@@ -555,5 +555,75 @@ const isValidRequest = (email, docType) => {
     return allowedDomains.includes(emailDomain) && docLinks.hasOwnProperty(docType);
 };
 </script>
+<!-- Add this before </body> -->
+<div id="docModal" class="doc-modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeDocModal()">&times;</span>
+        <h2 id="modalTitle">Get Document</h2>
+        <form id="docRequestForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+            <input type="hidden" name="document_type" id="docType">
+            
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" name="name" required class="form-input">
+            </div>
+            
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" required class="form-input">
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <span id="spinner" style="display:none;">⏳ Sending...</span>
+                <span id="buttonText">Get Document Now</span>
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Document Links (Update with your GitHub URLs)
+    const DOCUMENT_LINKS = {
+        about: 'https://manaccan.github.io/the-big-ear/documents/about-us.pdf',
+        professionals: 'https://manaccan.github.io/the-big-ear/documents/professionals-guide.pdf',
+        investors: 'https://manaccan.github.io/the-big-ear/documents/investor-prospectus.pdf'
+    };
+
+    // Form Handling
+    document.getElementById('docRequestForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const form = e.target;
+        const spinner = document.getElementById('spinner');
+        const buttonText = document.getElementById('buttonText');
+        
+        // Show loading state
+        spinner.style.display = 'inline';
+        buttonText.style.display = 'none';
+
+        try {
+            // Submit to Formspree
+            await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            });
+
+            // Direct download after submission
+            const docType = document.getElementById('docType').value;
+            window.open(DOCUMENT_LINKS[docType], '_blank');
+            
+            // Close modal
+            closeDocModal();
+            form.reset();
+
+        } catch (error) {
+            alert('Error: Please email us directly at hello@thebigear.org');
+        } finally {
+            spinner.style.display = 'none';
+            buttonText.style.display = 'inline';
+        }
+    });
+</script>
 </body>
 </html>
