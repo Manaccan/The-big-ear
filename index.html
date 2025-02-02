@@ -548,6 +548,12 @@
             submitBtn.disabled = false;
         });
     });
+	// Add to script
+const isValidRequest = (email, docType) => {
+    const emailDomain = email.split('@')[1];
+    const allowedDomains = ['gmail.com', 'company.com']; // Add your allowed domains
+    return allowedDomains.includes(emailDomain) && docLinks.hasOwnProperty(docType);
+};
 </script>
 </body>
 </html>
