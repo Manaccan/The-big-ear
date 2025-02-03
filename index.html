@@ -1,95 +1,379 @@
-<!-- Keep only ONE copy of the modal in your HTML -->
-<div id="docModal" class="doc-modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeDocModal()">&times;</span>
-        <h2 id="modalTitle">Download Document</h2>
-        <form id="docRequestForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-            <input type="hidden" name="document_type" id="docType">
-            
-            <div class="form-group">
-                <label>Your Full Name</label>
-                <input type="text" name="name" required class="form-input">
-            </div>
-            
-            <div class="form-group">
-                <label>Your Email</label>
-                <input type="email" name="email" required class="form-input">
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Big Ear - Problem Solving Community</title>
+    <style>
+        /* ===== BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-            <button type="submit" class="submit-btn">
-                <span class="spinner" style="display: none;">⏳</span>
-                Send Document
-            </button>
-        </form>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* ===== HEADER SECTION ===== */
+        .header {
+            display: flex;
+            align-items: flex-start;
+            gap: 50px;
+            max-width: 1000px;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        /* LOGO ADJUSTMENTS */
+        .logo {
+            width: 250px; /* Adjust this value to resize */
+            height: auto; /* Maintains aspect ratio */
+            border-radius: 15px;
+            margin-top: 10px; /* Aligns logo top with H1 */
+        }
+
+        .text-container {
+            flex: 1;
+            padding-top: 10px; /* Aligns text with logo */
+        }
+
+        h1 {
+            color: #2a4a6e;
+            font-size: 70px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            color: #4a6582;
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        h3 {
+            color: #666;
+            font-size: 20px;
+            font-weight: 300;
+            max-width: 500px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            color: #4a6582;
+            font-size: 20px;
+            font-style: italic;
+            margin-bottom: 10px; /* Aligns with logo bottom */
+        }
+
+        /* ===== MIDDLE CONTENT ===== */
+        .intro-text {
+            color: #4a6582;
+            font-size: 18px;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+
+        .panels {
+            display: flex;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 20px auto;
+        }
+
+        .panel {
+            flex: 1;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact-section {
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* ===== MOBILE RESPONSIVENESS ===== */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+                padding: 30px;
+            }
+
+            .logo {
+                width: 150px;
+                margin-top: 0;
+            }
+
+            h1 { font-size: 50px; text-align: center; }
+            h2 { font-size: 22px; text-align: center; }
+            h3 { font-size: 16px; text-align: center; }
+            h4 { font-size: 18px; text-align: center; }
+
+            .panels { flex-direction: column; }
+            .intro-text { font-size: 16px; padding: 0 20px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="logo.png" alt="The Big Ear Logo" class="logo">
+        <div class="text-container">
+            <h1>The Big Ear</h1>
+            <h2>What's Your Problem?</h2>
+            <h3>No seriously, tell us your problem and we'll help solve it!</h3>
+            <h4>We Listen!</h4>
+        </div>
+    </header>
+
+    <!-- INTRO PARAGRAPH -->
+    <div class="intro-text">
+        <p>At The Big Ear, we believe every problem has a solution waiting to be discovered. Our community-driven platform connects people facing challenges with compassionate listeners and experienced problem-solvers. Whether you're dealing with personal dilemmas, technical issues, or creative blocks, we're here to help you find clarity and actionable solutions. Together, we turn obstacles into opportunities through shared wisdom and collaborative thinking.</p>
     </div>
-</div>
 
-<script>
-    // Document Request System - Only one copy needed
-    const DOCUMENT_LINKS = {
-        about: 'https://manaccan.github.io/the-big-ear/documents/about-us.pdf',
-        professionals: 'https://manaccan.github.io/the-big-ear/documents/professionals-guide.pdf',
-        investors: 'https://manaccan.github.io/the-big-ear/documents/investor-prospectus.pdf'
-    };
+    <!-- TWO PANELS -->
+    <div class="panels">
+        <div class="panel" style="background: #f0f8ff;">
+            <h2>Share Your Problem</h2>
+            <p>Describe your challenge in detail. Our system will match you with the best resources and advisors.</p>
+        </div>
+        <div class="panel" style="background: #fff9e6;">
+            <h2>Get Solutions</h2>
+            <p>Receive personalized advice, step-by-step guides, and community support tailored to your situation.</p>
+        </div>
+    </div>
 
-    function showDocForm(docType) {
-        const titles = {
-            about: "About Us Overview",
-            professionals: "Professional Partnerships Guide",
-            investors: "Investor Prospectus"
-        };
-        
-        if (!DOCUMENT_LINKS[docType]) {
-            alert('Document not available. Please try again later.');
-            return;
+    <!-- CONTACT SECTION -->
+   <!-- Updated Contact Section -->
+<section class="contact-section">
+    <h2>Connect With Us</h2>
+    
+    <!-- GitHub Discussions Card -->
+    <div class="contact-card">
+        <h3>Community Support</h3>
+        <a href="https://github.com/Manaccan/the-big-ear/discussions" 
+           target="_blank" 
+           class="github-link">
+            Visit GitHub Discussions
+        </a>
+        <p>Get help from our community forum</p>
+    </div>
+
+    <!-- Email Card -->
+    <div class="contact-card">
+        <h3>Direct Contact</h3>
+        <a href="mailto:hello@thebigear.org" 
+           class="email-link">
+            Email Our Team
+        </a>
+        <p>For private inquiries and partnerships</p>
+    </div>
+</section>
+
+<style>
+    /* Updated Contact Section Styles */
+    .contact-section {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 30px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .contact-card {
+        margin: 25px 0;
+        padding: 25px;
+        border-radius: 15px;
+        background: #f8f9fa;
+    }
+
+    .github-link {
+        display: inline-block;
+        background: #2a4a6e;
+        color: white!important;
+        padding: 12px 35px;
+        border-radius: 30px;
+        text-decoration: none;
+        margin: 15px 0;
+        transition: background 0.3s ease;
+    }
+
+    .email-link {
+        display: inline-block;
+        background: #4a6582;
+        color: white!important;
+        padding: 12px 35px;
+        border-radius: 30px;
+        text-decoration: none;
+        margin: 15px 0;
+        transition: background 0.3s ease;
+    }
+
+    .github-link:hover {
+        background: #1a3a5e;
+    }
+
+    .email-link:hover {
+        background: #3a5572;
+    }
+
+    .contact-card h3 {
+        color: #2a4a6e;
+        margin-bottom: 10px;
+    }
+
+    .contact-card p {
+        color: #666;
+        font-size: 0.9em;
+    }
+
+    @media (max-width: 768px) {
+        .contact-card {
+            text-align: center;
         }
         
-        document.getElementById('docType').value = docType;
-        document.getElementById('modalTitle').textContent = titles[docType];
-        document.getElementById('docModal').style.display = 'block';
+        .github-link,
+        .email-link {
+            width: 100%;
+        }
     }
+</style>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Big Ear - Problem Solving Community</title>
+    <style>
+        /* (Keep all existing styles here) */
 
-    function closeDocModal() {
-        document.getElementById('docModal').style.display = 'none';
-    }
+        /* ===== FOOTER STYLES ===== */
+        .site-footer {
+            background: white;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-top: 1px solid #e0e0e0;
+            width: 100%;
+        }
 
-    // Form submission handler
-    document.getElementById('docRequestForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const spinner = form.querySelector('.spinner');
-        const submitBtn = form.querySelector('button');
-        
-        try {
-            spinner.style.display = 'inline-block';
-            submitBtn.disabled = true;
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+        }
 
-            // Submit to Formspree
-            await fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
-            });
+        .footer-section h4 {
+            color: #2a4a6e;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
 
-            // Direct download
-            const docType = document.getElementById('docType').value;
-            window.open(DOCUMENT_LINKS[docType], '_blank');
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #4a6582;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #2a4a6e;
+            text-decoration: underline;
+        }
+
+        .footer-brand {
+            text-align: right;
+            max-width: 200px;
+        }
+
+        .footer-logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        .copyright {
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-brand {
+                text-align: center;
+                margin: 0 auto;
+            }
+            .footer-section {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- (Keep existing header, panels, and contact section here) -->
+
+    <!-- NEW FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/professionals">For Professionals</a></li>
+                    <li><a href="/investors">For Investors</a></li>
+                </ul>
+            </div>
             
-            closeDocModal();
-            form.reset();
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="https://github.com/Manaccan/the-big-ear/discussions" target="_blank">Community Forum</a></li>
+                    <li><a href="mailto:hello@thebigear.org">Contact Support</a></li>
+                </ul>
+            </div>
 
-        } catch (error) {
-            alert('Error: Please email us directly at hello@thebigear.org');
-        } finally {
-            spinner.style.display = 'none';
-            submitBtn.disabled = false;
-        }
-    });
-
-    // Close modal when clicking outside
-    window.onclick = (event) => {
-        if (event.target === document.getElementById('docModal')) {
-            closeDocModal();
-        }
-    };
-</script>
+            <div class="footer-brand">
+                <img src="logo.png" alt="The Big Ear Logo" class="footer-logo">
+                <p class="copyright">© 2024 EduAI-Solutions<br>Solving Problems, Together</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
